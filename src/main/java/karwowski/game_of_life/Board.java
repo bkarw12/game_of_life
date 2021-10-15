@@ -6,10 +6,10 @@ import java.util.Random;
 public class Board {
     private static final double THRESHOLD = 0.5;
 
-    private boolean[][] state;
+    private byte[][] state;
 
     private Board(int m, int n) {
-        state = new boolean[m][n];
+        state = new byte[m][n];
     }
 
     public static Board deadBoard(int m, int n) {
@@ -22,7 +22,7 @@ public class Board {
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                b.state[i][j] = r.nextDouble() >= THRESHOLD;
+                b.state[i][j] = (byte) ((r.nextDouble() >= THRESHOLD) ? 1 : 0);
             }
         }
 
