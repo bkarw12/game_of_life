@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Board {
-    private static final double THRESHOLD = 0.9;
+    private static final double THRESHOLD = 0.8;
 
     private final int width;
     private final int height;
