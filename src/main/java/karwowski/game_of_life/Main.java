@@ -24,5 +24,9 @@ public class Main {
 
         Board board = Board.randomBoard(m, n);
         BoardRenderer.render(board);
+        board.nextState();
+        BoardRenderer.render(board);
+        board.nextState();
+        BoardRenderer.render(board);
     }
 }

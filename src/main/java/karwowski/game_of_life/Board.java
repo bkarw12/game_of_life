@@ -45,6 +45,32 @@ public class Board {
         return b;
     }
 
+    public void nextState() {
+        byte[][] newState = new byte[width][height];
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                int neighbours = countNeighbours(i , j);
+
+                if (neighbours == 3 || (neighbours == 2 && state[i][j] == 1))
+                    newState[i][j] = 1;
+            }
+        }
+
+        state = newState;
+    }
+
+    private int countNeighbours(int i, int j) {
+        int count = 0;
+        for (int k = i - 1; k <= i + 1; k++) {
+            for (int l = j - 1; l <= j + 1; l++) {
+                if (k >= 0 && k < width && l >= 0 && l < height)
+                    count += state[k][l];
+            }
+        }
+        return count - state[i][j];
+    }
+
     @Override
     public String toString() {
         return Arrays.deepToString(state);
