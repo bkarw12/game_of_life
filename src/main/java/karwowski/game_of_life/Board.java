@@ -11,6 +11,9 @@ public class Board {
     private byte[][] state;
 
     private Board(int width, int height) {
+        if (width <= 0 || height <= 0)
+            throw new IllegalArgumentException("Board dimensions must be positive!");
+
         this.width = width;
         this.height = height;
         state = new byte[width][height];
