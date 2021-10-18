@@ -6,22 +6,26 @@ import java.util.Random;
 public class Board {
     private static final double THRESHOLD = 0.5;
 
+    private int width;
+    private int height;
     private byte[][] state;
 
-    private Board(int m, int n) {
-        state = new byte[m][n];
+    private Board(int width, int height) {
+        this.width = width;
+        this.height = height;
+        state = new byte[width][height];
     }
 
-    public static Board deadBoard(int m, int n) {
-        return new Board(m, n);
+    public static Board deadBoard(int width, int height) {
+        return new Board(width, height);
     }
 
-    public static Board randomBoard(int m, int n) {
-        Board b = deadBoard(m, n);
+    public static Board randomBoard(int width, int height) {
+        Board b = deadBoard(width, height);
         Random r = new Random();
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 b.state[i][j] = (byte) ((r.nextDouble() >= THRESHOLD) ? 1 : 0);
             }
         }
