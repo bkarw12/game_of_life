@@ -45,6 +45,16 @@ public class Board {
         return b;
     }
 
+    public static Board fromState(byte[][] state) {
+        int w = state.length;
+        int h = state[0].length;
+
+        Board b = deadBoard(w, h);
+        b.state = state;
+
+        return b;
+    }
+
     public void nextState() {
         byte[][] newState = new byte[width][height];
 
