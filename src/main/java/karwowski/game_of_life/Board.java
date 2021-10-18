@@ -6,14 +6,26 @@ import java.util.Random;
 public class Board {
     private static final double THRESHOLD = 0.5;
 
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
     private byte[][] state;
 
     private Board(int width, int height) {
         this.width = width;
         this.height = height;
         state = new byte[width][height];
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public byte[][] getState() {
+        return state;
     }
 
     public static Board deadBoard(int width, int height) {
