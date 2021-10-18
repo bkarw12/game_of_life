@@ -23,6 +23,6 @@ public class Main {
         }
 
         Board board = Board.randomBoard(m, n);
-        System.out.println(board);
+        BoardRenderer.render(board);
     }
 }
