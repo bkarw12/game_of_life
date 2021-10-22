@@ -28,10 +28,9 @@ public class Main {
 
         // Start the game and let it run
         Board board = Board.randomBoard(m, n);
-        BoardRenderer.render(board);
-        board.nextState();
-        BoardRenderer.render(board);
-        board.nextState();
-        BoardRenderer.render(board);
+        while (true) {
+            BoardRenderer.render(board);
+            board.nextState();
+        }
     }
 }
