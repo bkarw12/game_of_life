@@ -1,5 +1,8 @@
 package karwowski.game_of_life;
 
+/**
+ * BoardRenderer pretty-prints the Board's state.
+ */
 public class BoardRenderer {
     private static final char EMPTY_CELL = ' ';
     private static final char FULL_CELL = '#';
