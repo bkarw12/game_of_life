@@ -1,6 +1,5 @@
 package karwowski.game_of_life;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
@@ -12,13 +11,12 @@ public class BoardRenderer {
     private static final char EMPTY_CELL = ' ';
     private static final char FULL_CELL = '#';
 
-    public static void renderWithLanterna(Board board, Terminal terminal)
+    public static void render(Board board, Terminal terminal)
             throws IOException {
         if (board == null || terminal == null)
             throw new IllegalArgumentException(
                     "Board and Terminal can't be null when rendering!");
 
-        final TextGraphics textGraphics = terminal.newTextGraphics();
         terminal.clearScreen();
 
         terminal.putString("-".repeat(board.getWidth() + 2));

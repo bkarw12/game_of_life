@@ -1,15 +1,11 @@
 package karwowski.game_of_life;
 
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
+import com.googlecode.lanterna.input.*;
 import com.googlecode.lanterna.terminal.*;
-import com.googlecode.lanterna.terminal.swing.SwingTerminalFrame;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Main class executed at program startup.
@@ -48,7 +44,7 @@ public class Main {
             terminal.enterPrivateMode();
             terminal.setCursorVisible(false);
             while (!exited && c.isValid()) {
-                BoardRenderer.renderWithLanterna(board, terminal);
+                BoardRenderer.render(board, terminal);
                 terminal.putString("Press ESC to exit");
                 terminal.flush();
                 board.nextState();
@@ -58,13 +54,13 @@ public class Main {
                 Thread.sleep(100);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } finally {
             if (terminal != null) {
                 try {
                     terminal.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.out.println(e.getMessage());
                 }
             }
         }
