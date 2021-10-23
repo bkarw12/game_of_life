@@ -3,8 +3,10 @@ package karwowski.game_of_life;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.terminal.*;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFrame;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -37,13 +39,15 @@ public class Main {
 
         // Initialize the terminal
         DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
+        defaultTerminalFactory.setTerminalEmulatorTitle("Game of Life");
         Terminal terminal = null;
         boolean exited = false;
         try {
             terminal = defaultTerminalFactory.createTerminal();
+            Component c = (Component) terminal;
             terminal.enterPrivateMode();
             terminal.setCursorVisible(false);
-            while (!exited) {
+            while (!exited && c.isValid()) {
                 BoardRenderer.renderWithLanterna(board, terminal);
                 terminal.putString("Press ESC to exit");
                 terminal.flush();
