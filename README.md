@@ -8,6 +8,7 @@ This program is easiest to build and run using [Gradle](https://gradle.org/). It
 - To build and test the program:
 `./gradlew build` in the main project directory.
 - To run the program:
-`./gradlew run`.\
+`./gradlew run`.
+
 The program asks for input: Game's width and height parameters.
 Then a new terminal windows is opened with Game of Life running.
