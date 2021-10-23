@@ -1,5 +1,13 @@
 package karwowski.game_of_life;
 
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.googlecode.lanterna.terminal.Terminal;
+
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -28,9 +36,27 @@ public class Main {
 
         // Start the game and let it run
         Board board = Board.randomBoard(m, n);
-        while (true) {
-            BoardRenderer.render(board);
-            board.nextState();
+
+        DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
+        Terminal terminal = null;
+        try {
+            terminal = defaultTerminalFactory.createTerminal();
+            terminal.enterPrivateMode();
+            terminal.setCursorVisible(false);
+            for (int i = 0; i < 10; i++) {
+                BoardRenderer.renderWithLanterna(board, terminal, i);
+                Thread.sleep(1000);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (terminal != null) {
+                try {
+                    terminal.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

@@ -1,5 +1,10 @@
 package karwowski.game_of_life;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.terminal.Terminal;
+
+import java.io.IOException;
+
 /**
  * BoardRenderer pretty-prints the Board's state.
  */
@@ -18,5 +23,16 @@ public class BoardRenderer {
             System.out.println("|");
         }
         System.out.println("-".repeat(board.getWidth() + 2));
+    }
+
+    public static void renderWithLanterna(Board board, Terminal terminal, int i)
+            throws IOException {
+        final TextGraphics textGraphics = terminal.newTextGraphics();
+        terminal.clearScreen();
+        textGraphics.putString(terminal.getCursorPosition(), "Hello World! " + i);
+        terminal.setCursorPosition(
+                terminal.getCursorPosition().withColumn(0).withRelativeRow(1));
+        textGraphics.putString(terminal.getCursorPosition(), "Hello World! " + i);
+        terminal.flush();
     }
 }
