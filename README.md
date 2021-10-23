@@ -5,9 +5,8 @@ This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Co
 ### Compiling, testing and running the program
 This program is easiest to build and run using [Gradle](https://gradle.org/). It was originally developed using the 7.2 version.
 
-- To build the program:
+- To build and test the program:
 `./gradlew build` in the main project directory.
-- To test the program:
-`./gradlew test`.
 - To run the program:
 `./gradlew run`.
+The program asks for input: Game's width and height parameters. Then a new terminal windows is opened with Game of Life running.
