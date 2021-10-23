@@ -24,6 +24,18 @@ application {
     mainClass = 'karwowski.game_of_life.Main'
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'karwowski.game_of_life.Main'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+
 run {
     standardInput = System.in
 }

@@ -1,12 +1,10 @@
 package karwowski.game_of_life;
 
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
+import com.googlecode.lanterna.terminal.*;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -34,18 +32,26 @@ public class Main {
             System.exit(1);
         }
 
-        // Start the game and let it run
+        // Create new random Board
         Board board = Board.randomBoard(m, n);
 
+        // Initialize the terminal
         DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
         Terminal terminal = null;
+        boolean exited = false;
         try {
             terminal = defaultTerminalFactory.createTerminal();
             terminal.enterPrivateMode();
             terminal.setCursorVisible(false);
-            for (int i = 0; i < 10; i++) {
-                BoardRenderer.renderWithLanterna(board, terminal, i);
-                Thread.sleep(1000);
+            while (!exited) {
+                BoardRenderer.renderWithLanterna(board, terminal);
+                terminal.putString("Press ESC to exit");
+                terminal.flush();
+                board.nextState();
+                KeyStroke keyStroke = terminal.pollInput();
+                if (keyStroke != null)
+                    exited = keyStroke.getKeyType() == KeyType.Escape;
+                Thread.sleep(100);
             }
         } catch (Exception e) {
             e.printStackTrace();
