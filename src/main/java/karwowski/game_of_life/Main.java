@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 /**
  * Main class executed at program startup.
  * Gets input from the user and controls the Game's progress.
+ * It can also read input from a file specified in program arguments (-f flag).
  */
 public class Main {
     private static final String FILE_FLAG = "f";
@@ -22,6 +23,7 @@ public class Main {
     public static void main(String[] args) {
         int m = 0, n = 0;
 
+        // Add option to read input from filename provided in program arguments
         Options options = new Options();
         options.addOption(new Option(
                 FILE_FLAG, "filename", true, "input filename"));
@@ -52,7 +54,7 @@ public class Main {
                 System.exit(1);
             }
             System.out.println(reader.lines().collect(Collectors.joining()));
-            
+
             // TODO remove
             board = Board.deadBoard(5, 5);
         } else {
