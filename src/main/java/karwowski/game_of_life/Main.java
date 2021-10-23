@@ -43,11 +43,15 @@ public class Main {
             Component c = (Component) terminal;
             terminal.enterPrivateMode();
             terminal.setCursorVisible(false);
+
+            // Run the Game until the program Frame is exited
             while (!exited && c.isValid()) {
+                // Render the board and instructions
                 BoardRenderer.render(board, terminal);
                 terminal.putString("Press ESC to exit");
                 terminal.flush();
                 board.nextState();
+                // Check for pressing ESC to exit
                 KeyStroke keyStroke = terminal.pollInput();
                 if (keyStroke != null)
                     exited = keyStroke.getKeyType() == KeyType.Escape;
