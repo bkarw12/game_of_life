@@ -1,7 +1,6 @@
 package karwowski.game_of_life;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Board stores all the information about the state of the game.

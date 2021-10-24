@@ -1,9 +1,7 @@
 package karwowski.game_of_life;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.io.*;
+import java.util.*;
 
 /**
  * BoardParser is responsible for parsing Board state data from input files.

@@ -5,12 +5,8 @@ import com.googlecode.lanterna.terminal.*;
 import org.apache.commons.cli.*;
 
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Main class executed at program startup.
