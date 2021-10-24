@@ -2,6 +2,8 @@
 
 This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) using [this guide](https://robertheaton.com/2018/07/20/project-2-game-of-life/).
 
+![](game_of_life.gif)
+
 ### Compiling, testing and running the program
 This program is easiest to build and run using [Gradle](https://gradle.org/). It was originally developed using the 7.2 version.
 
