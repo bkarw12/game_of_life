@@ -40,21 +40,18 @@ public class Main {
             System.exit(1);
         }
 
-        final Board board;
+        Board board = null;
 
         // Check if input file is provided, if not then create random Board
         if (cmd.hasOption(FILE_FLAG)) {
             // Read input file and parse it
             try (BufferedReader reader = new BufferedReader(
                     new FileReader(cmd.getOptionValue(FILE_FLAG)))) {
-                BoardParser.parse(reader);
+                board = BoardParser.parse(reader);
             } catch (IOException e) {
                 System.out.println(e.getMessage());
                 System.exit(1);
             }
-
-            // TODO remove
-            board = Board.deadBoard(5, 5);
         } else {
             // Get input from user
             try (Scanner sc = new Scanner(System.in)) {
