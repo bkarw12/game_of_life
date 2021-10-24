@@ -19,20 +19,20 @@ public class BoardTest {
     @Test
     @DisplayName("Dead cells with exactly 3 neighbours should come alive")
     void test3Neighbours() {
-        byte[][] init = {
+        byte[][] initialState = {
                 {0, 0, 1},
                 {0, 1, 1},
                 {0, 0, 0}
         };
-        byte[][] check = {
+        byte[][] expectedState = {
                 {0, 1, 1},
                 {0, 1, 1},
                 {0, 0, 0}
         };
-        board = Board.fromState(init);
+        board = Board.fromState(initialState);
         board.nextState();
         assertArrayEquals(
-                board.getState(), check
+                board.getState(), expectedState
         );
     }
 }
