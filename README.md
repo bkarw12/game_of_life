@@ -9,6 +9,7 @@ This program is easiest to build and run using [Gradle](https://gradle.org/). It
 `./gradlew build` in the main project directory.
 - To run the program:
 `./gradlew run` or `java -jar build/libs/game_of_life-1.0.jar`.
+- The program can also be run with an optional argument `-f <FILENAME>`, where `<FILENAME>` is path to an input file with initial Game's state.
 
 The program asks for input: Game's width and height parameters.
 Then a new terminal windows is opened with Game of Life running.
